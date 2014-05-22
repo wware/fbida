@@ -51,6 +51,12 @@ struct cfg_cmdline fbi_cmd[] = {
 
 struct cfg_cmdline fbi_cfg[] = {
     {
+	.letter   = 'S',
+	.cmdline  = "nostatus",
+	.option   = { O_NO_STATUS},
+	.yesno    = 1,
+	.desc     = "don't show a status line",
+    },{
 	.cmdline  = "autoup",
 	.option   = { O_AUTO_UP },
 	.yesno    = 1,

@@ -145,6 +145,7 @@ int read_ahead;
 int editable;
 int blend_msecs;
 int perfmon = 0;
+int nostatus = 0;
 
 /* font handling */
 static char *fontname = NULL;
@@ -384,6 +385,8 @@ static void status_prepare(void)
     int y1 = fb_var.yres - (face->size->metrics.height >> 6);
     int y2 = fb_var.yres - 1;
 
+    if (nostatus)
+    	return;
     if (img) {
 	shadow_draw_image(img, fcurrent->left, fcurrent->top, y1, y2, 100);
 	shadow_darkify(0, fb_var.xres-1, y1, y2, transparency);
@@ -398,6 +401,8 @@ static void status_update(unsigned char *desc, char *info)
     int yt = fb_var.yres + (face->size->metrics.descender >> 6);
     wchar_t str[128];
     
+    if (nostatus)
+    	return;
     if (!statusline)
 	return;
     status_prepare();
@@ -419,6 +424,8 @@ static void status_error(unsigned char *msg)
     int yt = fb_var.yres + (face->size->metrics.descender >> 6);
     wchar_t str[128];
 
+    if (nostatus)
+    	return;
     status_prepare();
 
     swprintf(str,ARRAY_SIZE(str), L"%s", msg);
@@ -433,6 +440,8 @@ static void status_edit(unsigned char *msg, int pos)
     int yt = fb_var.yres + (face->size->metrics.descender >> 6);
     wchar_t str[128];
 
+    if (nostatus)
+    	return;
     status_prepare();
 
     swprintf(str,ARRAY_SIZE(str), L"%s", msg);
@@ -1451,6 +1460,7 @@ main(int argc, char *argv[])
     backup      = GET_BACKUP();
     preserve    = GET_PRESERVE();
     read_ahead  = GET_READ_AHEAD();
+    nostatus    = GET_NO_STATUS();
 
     max_mem_mb  = GET_CACHE_MEM();
     blend_msecs = GET_BLEND_MSECS();
