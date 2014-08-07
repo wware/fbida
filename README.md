@@ -37,8 +37,11 @@ PNG is a compression scheme, size and complexity are probably closely related
 in some Kolomogorv-ish way.  I expect that my early stuff will not be so
 complex, so that can wait for later.
 
+*WE NOW RETURN YOU TO YOUR REGULARLY SCHEDULED README*
+==
+
 what is it?
-===========
+--
 
 Ida is a small and fast image viewer, motif-based.  For people who
 don't want the KDE/GNOME overhead.  Some basic editing functions are
@@ -46,7 +49,7 @@ available too.
 
 
 build
-=====
+--
 
 Check the INSTALL file for detailed build instructions.
 
@@ -59,13 +62,13 @@ formats.
 
 
 usage
-=====
+--
 
 There is a manual page, check it out.
 
 
 what "ida" stands for?
-======================
+--
 
 It is just a name.  The utility used to be named "iv" for "Image
 Viewer", but that gave lots of name clashes.  Its very likely that
